@@ -1,0 +1,24 @@
+{
+  "name": "typescript-study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Takeuchi-Akihide/typescript-study.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Takeuchi-Akihide/typescript-study/issues"
+  },
+  "homepage": "https://github.com/Takeuchi-Akihide/typescript-study#readme",
+  "devDependencies": {
+    "tsx": "^4.22.1",
+    "typescript": "^6.0.3"
+  }
+}
