@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "day2": "tsx study/src/day2.ts"
+    "day2": "tsx study/src/day2.ts",
+    "day3": "tsx study/src/day3.ts"
   },
   "repository": {
     "type": "git",

@@ -38,7 +38,6 @@ const updateUserName = (targetId: number, newName: string): User[] => {
       return {
         ...user,
         name: newName,
-        id: 10,
       };
     }
     
