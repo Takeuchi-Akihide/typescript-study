@@ -13,15 +13,13 @@ async function fetchUsers(): Promise<User[]> {
     throw new Error(`Failed to fetch users: ${response.status}`);
   }
 
-  const data = await response.json();
+  const users: User[] = await response.json();
 
-  return data.map((user: any) => {
-    return {
+  return users.map((user: any) => ({
       id: user.id,
       name: user.name,
       email: user.email,
-    };
-  });
+  }));
 }
 
 async function fetchUserById(id: number): Promise<User> {
@@ -40,7 +38,7 @@ async function fetchUserById(id: number): Promise<User> {
   };
 };
 
-async function main(): Promise<void> {
+async function main() {
   try {
     const users = await fetchUsers();
     const displayUsers = users.map((user) => {
@@ -52,7 +50,7 @@ async function main(): Promise<void> {
     const user1 = await fetchUserById(1);
 
     console.log("users:");
-    console.log(users);
+    console.log(users.slice(0, 3));
     console.log(displayUsers);
     console.log("user1:");
     console.log(user1);
