@@ -8,6 +8,8 @@
     "day2": "tsx study/src/day2.ts",
     "day3": "tsx study/src/day3.ts",
     "day4": "tsx study/src/day4.ts",
+    "dev": "tsx src/playground.ts",
+    "playground": "tsx src/playground.ts",
     "build": "tsc --noEmit"
   },
   "repository": {
