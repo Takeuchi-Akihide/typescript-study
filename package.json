@@ -8,9 +8,9 @@
     "day2": "tsx study/src/day2.ts",
     "day3": "tsx study/src/day3.ts",
     "day4": "tsx study/src/day4.ts",
-    "dev": "tsx src/playground.ts",
+    "dev": "vite",
     "playground": "tsx src/playground.ts",
-    "build": "tsc --noEmit"
+    "build": "tsc --noEmit && vite build"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,13 @@
   },
   "homepage": "https://github.com/Takeuchi-Akihide/typescript-study#readme",
   "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
     "tsx": "^4.22.1",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vite": "^8.0.14"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
   }
 }
