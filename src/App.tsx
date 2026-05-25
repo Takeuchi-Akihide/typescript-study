@@ -1,23 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { User } from "./types";
 import { UserList } from "./component/UserList";
 import { UserForm } from "./component/UserForm";
-
-const initialUsers: User[] = [
-  {
-    id: 1,
-    name: "Taro Yamada",
-    email: "taro@example.com",
-  },
-  {
-    id: 2,
-    name: "Hanako Suzuki",
-    email: "hanako@example.com",
-  },
-];
+import { fetchUsers } from "./api/users";
 
 export function App() {
-  const [users, setUsers] = useState<User[]>(initialUsers);
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function loadUsers() {
+      setLoading(true);
+      setError(null);
+
+      const result = await fetchUsers();
+
+      if (result.ok) {
+        setUsers(result.data);
+      } else {
+        setError(result.error);
+      }
+      setLoading(false);
+    }
+
+    loadUsers();
+  }, []);
 
   function handleAddUser(name: string, email: string) {
     const newUser: User = {
@@ -29,6 +37,14 @@ export function App() {
     setUsers((prevUsers) => [...prevUsers, newUser]);
   }
 
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error !== null) {
+    return <p>{error}</p>;
+  }
+
   return (
     <main>
       <h1>User Management</h1>
@@ -37,3 +53,5 @@ export function App() {
     </main>
   );
 }
+
+export default App;
