@@ -1,4 +1,4 @@
-import React, { useState, type FormEvent } from "react";
+import React, { useState, type SubmitEvent } from "react";
 
 type UserFormProps = {
   onAddUser: (name: string, email: string) => void;
@@ -9,7 +9,7 @@ export function UserForm({ onAddUser }: UserFormProps) {
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (name.trim() === "" || email.trim() === "") {
