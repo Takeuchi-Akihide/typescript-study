@@ -1,4 +1,5 @@
 import type { ApiResult, User } from "../types";
+import { isUser, isUserArray } from "./userValidators";
 
 const API_BASE_URL = "https://jsonplaceholder.typicode.com";
 
@@ -22,11 +23,19 @@ export async function fetchUsers(): Promise<ApiResult<User[]>> {
       };
     }
 
-    const users = await response.json();
+    const data: unknown = await response.json();
+
+    if (!isUserArray(data)) {
+      return {
+        ok: false,
+        error: "Invalid users response",
+        status: response.status,
+      };
+    }
 
     return {
       ok: true,
-      data: users,
+      data,
     };
   } catch (error: unknown) {
     return {
@@ -55,11 +64,19 @@ export async function fetchUserById(id: number): Promise<ApiResult<User>> {
       };
     }
 
-    const user = await response.json();
+    const data :unknown = await response.json();
+
+    if (!isUser(data)) {
+      return {
+        ok: false,
+        error: "Invalid user response",
+        status: response.status,
+      };
+    }
 
     return {
       ok: true,
-      data: user,
+      data,
     };
 
   } catch (error: unknown) {
@@ -88,10 +105,19 @@ export async function createUser(name: string, email: string): Promise<ApiResult
       };
     }
 
-    const user: User = await response.json();
+    const data: unknown = await response.json();
+
+    if (!isUser(data)) {
+      return {
+        ok: false,
+        error: "Invalied user response",
+        status: response.status,
+      };
+    }
+
     return {
       ok: true,
-      data: user,
+      data,
     };
   } catch (error: unknown) {
     return {
