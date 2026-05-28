@@ -3,6 +3,7 @@ import type { User } from "./types";
 import { UserList } from "./component/UserList";
 import { UserForm } from "./component/UserForm";
 import { fetchUsers, createUser, deleteUser } from "./api/users";
+import { logError, logInfo } from "./utils/logger";
 
 export function App() {
   const [users, setUsers] = useState<User[]>([]);
@@ -18,8 +19,10 @@ export function App() {
 
       if (result.ok) {
         setUsers(result.data);
+        logInfo("users loaded", { count: result.data.length });
       } else {
         setError(result.error);
+        logError("failed to load users", result.error);
       }
       setLoading(false);
     }
@@ -36,6 +39,7 @@ export function App() {
       setUsers((currentUsers) => [...currentUsers, result.data])
     } else {
       setError(result.error);
+      logError("failed to create user", result.error);
     }
   }
 
@@ -50,6 +54,7 @@ export function App() {
       );
     } else {
       setError(result.error);
+      logError("failed to delete user", result.error);
     }
   }
 
