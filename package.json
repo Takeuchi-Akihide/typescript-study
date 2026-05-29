@@ -10,6 +10,7 @@
     "day4": "tsx study/src/day4.ts",
     "dev": "vite",
     "playground": "tsx src/playground.ts",
+    "mock-api": "tsx backend/mock-api/server.ts",
     "build": "tsc --noEmit && vite build"
   },
   "repository": {
@@ -24,14 +25,18 @@
   },
   "homepage": "https://github.com/Takeuchi-Akihide/typescript-study#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.2",
-    "tsx": "^4.22.1",
+    "tsx": "^4.22.3",
     "typescript": "^6.0.3",
     "vite": "^8.0.14"
   },
   "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   }

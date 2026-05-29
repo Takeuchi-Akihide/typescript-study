@@ -1,7 +1,8 @@
 import type { ApiResult, User } from "../types";
 import { isUser, isUserArray } from "./userValidators";
 
-const API_BASE_URL = "https://jsonplaceholder.typicode.com";
+// const API_BASE_URL = "https://jsonplaceholder.typicode.com";
+const API_BASE_URL = "http://localhost:3000";
 
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
